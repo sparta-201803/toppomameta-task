@@ -1,0 +1,22 @@
+<h1>タスク詳細</h1>
+<%= if flash["alert"].present? %>
+  <%= flash["alert"].each do |value| %>
+    <%= content_tag(:div, value) %>
+  <%= end %>
+<%= end %>
+
+<%= form_with model: @task, local: true do |form| %>
+  <p>
+    タイトル<br>
+      <%= form.text_field :title %>
+  </p>
+
+  <p>
+    内容<br>
+      <%= form.text_area :body %>
+  </p>
+  <%= form.submit "登録" %>
+<% end %>
+
+<a href="">Update Task</a>
+<a href="">詳細に戻る</a>
