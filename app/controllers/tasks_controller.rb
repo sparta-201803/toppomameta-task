@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   def index
     @tasks = Task.all
+    @task = Task.new
   end
 
   def show
@@ -18,7 +19,8 @@ class TasksController < ApplicationController
       redirect_to tasks_path
     else
       flash.now[:alert] = @task.errors.full_messages
-      render :new
+      @tasks = Task.all
+      render :index
     end
   end
 
@@ -28,8 +30,12 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    @task.update(task_params)
-    redirect_to tasks_path
+    if @task.update(task_params)
+      redirect_to tasks_path
+    else
+      flash.now[:alert] = @task.errors.full_messages
+      render :index
+    end
   end
 
   def destroy
