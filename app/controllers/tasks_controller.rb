@@ -34,7 +34,8 @@ class TasksController < ApplicationController
       redirect_to tasks_path
     else
       flash.now[:alert] = @task.errors.full_messages
-      render :index
+      @tasks = Task.all
+      render :edit
     end
   end
 
