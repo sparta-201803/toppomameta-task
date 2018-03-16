@@ -1,23 +1,2 @@
 <h1>タスクの編集</h1>
-<% if flash["alert"].present? %>
-  <div id="color">
-    <% flash["alert"].each do |value| %>
-      <%= content_tag(:div, value) %>
-    <% end %>
-  </div>
-<% end %>
-
-<%= form_with model: @task, local: true do |form| %>
-  <p>
-    タイトル<br>
-      <%= form.text_field :title %>
-  </p>
-
-  <p>
-    内容<br>
-      <%= form.text_area :body %>
-  </p>
-  <p><%= form.submit "Update Task" %></p>
-  <p><%= link_to "詳細に戻る", tasks_path(@book) %></p>
-
-<% end %>
+<%= render partial: 'form' %>

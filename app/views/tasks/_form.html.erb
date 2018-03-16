@@ -1,5 +1,5 @@
 <% if flash["alert"].present? %>
-  <div id="color">
+  <div class="color">
     <% flash["alert"].each do |value| %>
       <%= content_tag(:div, value) %>
     <% end %>
@@ -15,5 +15,5 @@
     内容<br>
       <%= form.text_area :body %>
   </p>
-  <%= form.submit "登録" %>
+  <p><%= form.submit %></p>
 <% end %>
