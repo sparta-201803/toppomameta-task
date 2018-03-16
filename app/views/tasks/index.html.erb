@@ -1,28 +1,9 @@
 <h1>タスク一覧</h1>
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= link_to task.title, task_path(task) %>&nbsp;<%= link_to "削除", task_path(task), method: :delete %></li>
+    <li><%= link_to task.title, task_path(task) %> <%= link_to "削除", task_path(task), method: :delete %></li>
   <% end %>
 </ul>
 <hr>
 <h2>タスク登録</h2>
-<% if flash["alert"].present? %>
-  <div id="color">
-    <% flash["alert"].each do |value| %>
-      <%= content_tag(:div, value) %>
-    <% end %>
-  </div>
-<% end %>
-
-<%= form_with model: @task, local: true do |form| %>
-  <p>
-    タイトル<br>
-      <%= form.text_field :title %>
-  </p>
-
-  <p>
-    内容<br>
-      <%= form.text_area :body %>
-  </p>
-  <%= form.submit "登録" %>
-<% end %>
+<%= render partial: 'form' %>

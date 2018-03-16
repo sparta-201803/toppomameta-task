@@ -1,4 +1,3 @@
-<h1>タスク登録_new</h1>
 <% if flash["alert"].present? %>
   <div id="color">
     <% flash["alert"].each do |value| %>
@@ -8,15 +7,13 @@
 <% end %>
 
 <%= form_with model: @task, local: true do |form| %>
-    <p>
-      タイトル<br>
+  <p>
+    タイトル<br>
       <%= form.text_field :title %>
-    </p>
-
-    <p>
-      内容<br>
+  </p>
+  <p>
+    内容<br>
       <%= form.text_area :body %>
-    </p>
-
-    <%= form.submit "登録" %>
+  </p>
+  <%= form.submit "登録" %>
 <% end %>
